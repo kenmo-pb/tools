@@ -1,0 +1,87 @@
+﻿
+; PureBasic IDE Exported Preferences
+; 
+[Sections]
+IncludeColors = 1
+; 
+; Color settings
+; 
+[Colors]
+ASMKeywordColor = RGB(146, 75, 114)
+ASMKeywordColor_Used = 1
+BackgroundColor = RGB(255, 255, 223)
+BackgroundColor_Used = 1
+BasicKeywordColor = RGB(0, 102, 102)
+BasicKeywordColor_Used = 1
+CommentColor = RGB(0, 170, 170)
+CommentColor_Used = 1
+ConstantColor = RGB(146, 75, 114)
+ConstantColor_Used = 1
+LabelColor = RGB(0, 0, 0)
+LabelColor_Used = 1
+NormalTextColor = RGB(0, 0, 0)
+NormalTextColor_Used = 1
+NumberColor = RGB(0, 0, 0)
+NumberColor_Used = 1
+OperatorColor = RGB(0, 0, 0)
+OperatorColor_Used = 1
+PointerColor = RGB(0, 0, 0)
+PointerColor_Used = 1
+PureKeywordColor = RGB(0, 102, 102)
+PureKeywordColor_Used = 1
+SeparatorColor = RGB(0, 0, 0)
+SeparatorColor_Used = 1
+StringColor = RGB(0, 128, 255)
+StringColor_Used = 1
+StructureColor = RGB(0, 0, 0)
+StructureColor_Used = 1
+LineNumberColor = RGB(128, 128, 128)
+LineNumberColor_Used = 1
+LineNumberBackColor = RGB(255, 255, 215)
+LineNumberBackColor_Used = 1
+MarkerColor = RGB(0, 170, 170)
+MarkerColor_Used = 1
+CurrentLineColor = RGB(255, 255, 183)
+CurrentLineColor_Used = 1
+SelectionColor = RGB(0, 120, 215)
+SelectionColor_Used = 1
+SelectionFrontColor = RGB(255, 255, 255)
+SelectionFrontColor_Used = 1
+CursorColor = RGB(0, 0, 0)
+CursorColor_Used = 1
+Debugger_LineColor = RGB(232, 232, 255)
+Debugger_LineColor_Used = 1
+Debugger_LineSymbolColor = RGB(232, 232, 255)
+Debugger_LineSymbolColor_Used = 1
+Debugger_ErrorColor = RGB(255, 0, 0)
+Debugger_ErrorColor_Used = 1
+Debugger_ErrorSymbolColor = RGB(255, 0, 0)
+Debugger_ErrorSymbolColor_Used = 1
+Debugger_BreakPointColor = RGB(0, 255, 255)
+Debugger_BreakPointColor_Used = 1
+Debugger_BreakpoinSymbolColor = RGB(0, 255, 255)
+Debugger_BreakpoinSymbolColor_Used = 1
+DisabledBackColor = RGB(248, 248, 248)
+DisabledBackColor_Used = 1
+GoodBraceColor = RGB(0, 102, 102)
+GoodBraceColor_Used = 1
+BadBraceColor = RGB(255, 0, 0)
+BadBraceColor_Used = 1
+ProcedureBackColor = RGB(255, 255, 223)
+ProcedureBackColor_Used = 1
+CustomKeywordColor = RGB(0, 0, 102)
+CustomKeywordColor_Used = 1
+Debugger_WarningColor = RGB(255, 208, 0)
+Debugger_WarningColor_Used = 1
+Debugger_WarningSymbolColor = RGB(255, 208, 0)
+Debugger_WarningSymbolColor_Used = 1
+IndentColor = RGB(0, 170, 170)
+IndentColor_Used = 1
+ModuleColor = RGB(0, 0, 0)
+ModuleColor_Used = 1
+SelectionRepeatColor = RGB(176, 255, 167)
+SelectionRepeatColor_Used = 1
+PlainBackground = RGB(255, 255, 223)
+PlainBackground_Used = 1
+ToolsPanel_FrontColor = RGB(0, 0, 0)
+ToolsPanel_BackColor = RGB(255, 255, 223)
