@@ -21,7 +21,7 @@
 
 ;-
 #SW_Title   = "ChangeTheme"
-#SW_Release =  20190609
+#SW_Release =  20190610
 
 
 ;- Compiler checks
@@ -46,7 +46,7 @@ PrefsModDate.i = GetFileDate(PrefsFile, #PB_Date_Modified)
 ;- Locate new color theme file
 ThemeFile.s = ProgramParameter(0)
 If (ThemeFile = "")
-  ThemeFile = OpenFileRequester(#SW_Title, GetHomeDirectory(),
+  ThemeFile = OpenFileRequester(#SW_Title, GetCurrentDirectory(),
       "PureBasic Themes|*.prefs;*.ini;*.theme;*.txt|All Files (*.*)|*", 0)
 EndIf
 If (ThemeFile = "")
