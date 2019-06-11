@@ -66,11 +66,19 @@ Next i
 
 ;- Read new color theme values
 NewMap ThemeValue.s()
+NewList ColorToDisable.s()
 If (OpenPreferences(ThemeFile))
   PreferenceGroup("Colors")
   ExaminePreferenceKeys()
   While (NextPreferenceKey())
-    ThemeValue(PreferenceKeyName()) = ReadPreferenceString(PreferenceKeyName(), "")
+    If (FindString(PreferenceKeyName(), "_Used"))
+      If (Val(PreferenceKeyValue()) = 0)
+        AddElement(ColorToDisable())
+        ColorToDisable() = StringField(PreferenceKeyName(), 1, "_Used")
+      EndIf
+    Else
+      ThemeValue(PreferenceKeyName()) = PreferenceKeyValue()
+    EndIf
   Wend
   ClosePreferences()
 Else
@@ -204,12 +212,21 @@ If (MapSize(ThemeValue()) > 0)
     ;- Write new values to Prefs file
     If (OpenPreferences(PrefsFile))
       PreferenceGroup("Editor")
+      NewList ColorToEnable.s()
       ExaminePreferenceKeys()
       While (NextPreferenceKey())
         If (FindMapElement(ThemeValue(), PreferenceKeyName()))
           WritePreferenceString(PreferenceKeyName(), ThemeValue())
+          AddElement(ColorToEnable())
+          ColorToEnable() = PreferenceKeyName()
         EndIf
       Wend
+      ForEach (ColorToEnable())
+        WritePreferenceInteger(ColorToEnable() + "_Disabled", #False)
+      Next
+      ForEach (ColorToDisable())
+        WritePreferenceInteger(ColorToDisable() + "_Disabled", #True)
+      Next
       
       ; Tools Panel colors stored in different group
       PreferenceGroup("ToolsPanel")
@@ -238,28 +255,28 @@ DataSection
   PB_IDE_ScintillaStyles:
   Data.i #STYLE_DEFAULT, @"", @"BackgroundColor"
   ;
-  Data.i  1, @"NormalTextColor", @"BackgroundColor"
-  Data.i  2, @"BasicKeywordColor", @"BackgroundColor"
-  Data.i  3, @"CommentColor", @"BackgroundColor"
-  Data.i  4, @"ConstantColor", @"BackgroundColor"
-  Data.i  5, @"StringColor", @"BackgroundColor"
-  Data.i  6, @"PureKeywordColor", @"BackgroundColor"
-  Data.i  7, @"ASMKeywordColor", @"BackgroundColor"
-  Data.i  8, @"OperatorColor", @"BackgroundColor"
-  Data.i  9, @"StructureColor", @"BackgroundColor"
-  Data.i 10, @"NumberColor", @"BackgroundColor"
-  Data.i 11, @"PointerColor", @"BackgroundColor"
-  Data.i 12, @"SeparatorColor", @"BackgroundColor"
-  Data.i 13, @"LabelColor", @"BackgroundColor"
+  Data.i  1, @"NormalTextColor",    @"BackgroundColor"
+  Data.i  2, @"BasicKeywordColor",  @"BackgroundColor"
+  Data.i  3, @"CommentColor",       @"BackgroundColor"
+  Data.i  4, @"ConstantColor",      @"BackgroundColor"
+  Data.i  5, @"StringColor",        @"BackgroundColor"
+  Data.i  6, @"PureKeywordColor",   @"BackgroundColor"
+  Data.i  7, @"ASMKeywordColor",    @"BackgroundColor"
+  Data.i  8, @"OperatorColor",      @"BackgroundColor"
+  Data.i  9, @"StructureColor",     @"BackgroundColor"
+  Data.i 10, @"NumberColor",        @"BackgroundColor"
+  Data.i 11, @"PointerColor",       @"BackgroundColor"
+  Data.i 12, @"SeparatorColor",     @"BackgroundColor"
+  Data.i 13, @"LabelColor",         @"BackgroundColor"
   Data.i 14, @"CustomKeywordColor", @"BackgroundColor"
-  Data.i 15, @"ModuleColor", @"BackgroundColor"
-  Data.i 16, @"BadBraceColor", @"BackgroundColor"
+  Data.i 15, @"ModuleColor",        @"BackgroundColor"
+  Data.i 16, @"BadBraceColor",      @"BackgroundColor"
   ;
-  Data.i 33, @"LineNumberColor", @"LineNumberBackColor"
-  Data.i 34, @"GoodBraceColor", @"CurrentLineColor"
-  Data.i 35, @"BadBraceColor", @"CurrentLineColor"
-  Data.i 35, @"BadBraceColor", @"CurrentLineColor"
-  Data.i 37, @"IndentColor", @"BackgroundColor"
+  Data.i 33, @"LineNumberColor",    @"LineNumberBackColor"
+  Data.i 34, @"GoodBraceColor",     @"CurrentLineColor"
+  Data.i 35, @"BadBraceColor",      @"CurrentLineColor"
+  Data.i 35, @"BadBraceColor",      @"CurrentLineColor"
+  Data.i 37, @"IndentColor",        @"BackgroundColor"
   ;
   Data.i -1, #Null, #Null
 EndDataSection
