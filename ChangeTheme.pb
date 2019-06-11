@@ -21,7 +21,7 @@
 
 ;-
 #SW_Title   = "ChangeTheme"
-#SW_Release =  20190610
+#SW_Release =  20190611
 
 
 ;- Compiler checks
@@ -115,6 +115,7 @@ If (MapSize(ThemeValue()) > 0)
       CompilerIf (#SW_Windows)
         *Window = Val(GetEnvironmentVariable("PB_TOOL_MainWindow"))
         SendMessage_(*Window, #WM_SETREDRAW, #False, #Null)
+        KeywordBolding.i = Bool(SendMessage_(*Scintilla, #SCI_STYLEGETBOLD, 2, 0))
       CompilerEndIf
       
       ; Apply all found style colors
@@ -161,6 +162,8 @@ If (MapSize(ThemeValue()) > 0)
             SendMessage_(*Scintilla, #SCI_MARKERSETFORE, i, Val(ThemeValue()))
           Next i
         EndIf
+        SendMessage_(*Scintilla, #SCI_STYLESETBOLD,  2, KeywordBolding)
+        SendMessage_(*Scintilla, #SCI_STYLESETBOLD, 14, KeywordBolding)
         SendMessage_(*Window, #WM_SETREDRAW, #True, #Null)
         InvalidateRect_(*Window, #Null, #True)
       CompilerEndIf
