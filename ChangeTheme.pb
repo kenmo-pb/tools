@@ -21,7 +21,7 @@
 
 ;-
 #SW_Title   = "ChangeTheme"
-#SW_Release =  20190611
+#SW_Release =  20190619
 
 
 ;- Compiler checks
@@ -165,7 +165,8 @@ If (MapSize(ThemeValue()) > 0)
         SendMessage_(*Scintilla, #SCI_STYLESETBOLD,  2, KeywordBolding)
         SendMessage_(*Scintilla, #SCI_STYLESETBOLD, 14, KeywordBolding)
         SendMessage_(*Window, #WM_SETREDRAW, #True, #Null)
-        InvalidateRect_(*Window, #Null, #True)
+        RedrawWindow_(*Window, #Null, #Null,
+            #RDW_ERASE | #RDW_FRAME | #RDW_INVALIDATE | #RDW_ALLCHILDREN)
       CompilerEndIf
       
     Else
