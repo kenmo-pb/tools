@@ -3,6 +3,7 @@
 ; +--------------+
 ; | 2017-07-18 . Rewrite (PureBasic 5.60)
 ; | 2017-07-19 . Cleanup, added text description
+; | 2019-08-12 . Added support for RGBA values (alpha does not affect preview)
 
 ; DESCRIPTION
 ;   This tool for the PureBasic IDE will show a preview when you hover over a color.
@@ -26,7 +27,7 @@
 ;- Constants
 
 #SW_Title   = "ColorPreview"
-#SW_Version = "1.0"
+#SW_Version = "1.1"
 
 CompilerIf (#PB_Compiler_OS <> #PB_OS_Windows)
   CompilerError "Please build on Windows!"
@@ -153,7 +154,7 @@ Procedure.i FindRGBValue(Pos.i, *Color.INTEGER)
             Text = RemoveString(Text, ")")
             Text = RemoveString(Text, " ")
             Text = RemoveString(Text, #TAB$)
-            If (CountString(Text, ",") = 2)
+            If ((CountString(Text, ",") = 2) Or (CountString(Text, ",") = 3))
               *Color\i = RGB(Val(StringField(Text, 1, ",")),
                   Val(StringField(Text, 2, ",")),
                   Val(StringField(Text, 3, ",")))
@@ -240,7 +241,7 @@ Procedure TrackCursor()
           ; Detect color in hex format
           ElseIf ((Left(Text, 1) = "$") And (Len(Text) >= 4))
             Valid = #True
-            Color = Val(Text)
+            Color = Val(Text) & $FFFFFF
             
           EndIf
         EndIf
